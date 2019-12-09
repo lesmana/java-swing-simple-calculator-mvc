@@ -14,18 +14,9 @@ public class View {
 
 	Controller controller;
 
-	JTextField input1;
-	JComboBox<String> operand;
-	JTextField input2;
-	JButton calcbutton;
 	JLabel result;
 
 	public View() {
-		input1 = new JTextField(10);
-		operand = new JComboBox<String>(new String[] { "+", "-" });
-		input2 = new JTextField(10);
-		calcbutton = new JButton("calculate");
-		result = new JLabel("    ");
 	}
 
 	public void setController(Controller controller) {
@@ -36,6 +27,10 @@ public class View {
 		JFrame frame = new JFrame("calculator mvc");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
+		JTextField input1 = new JTextField(10);
+		JComboBox<String> operand = new JComboBox<String>(new String[] { "+", "-" });
+		JTextField input2 = new JTextField(10);
+		JButton calcbutton = new JButton("calculate");
 		calcbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s1 = input1.getText();
@@ -44,6 +39,7 @@ public class View {
 				controller.handleUserInput(s1, op, s2);
 			}
 		});
+		result = new JLabel("    ");
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		panel.add(input1);
 		panel.add(operand);
