@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -9,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class View {
+
+	Controller controller;
 
 	JTextField input1;
 	JComboBox<String> operand;
@@ -24,10 +28,22 @@ public class View {
 		result = new JLabel("    ");
 	}
 
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+
 	public void show() {
 		JFrame frame = new JFrame("calculator mvc");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
+		calcbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s1 = input1.getText();
+				String op = operand.getItemAt(operand.getSelectedIndex());
+				String s2 = input2.getText();
+				controller.handleUserInput(s1, op, s2);
+			}
+		});
 		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		panel.add(input1);
 		panel.add(operand);
@@ -37,7 +53,10 @@ public class View {
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
+	}
 
+	public void setResult(String res) {
+		this.result.setText(res);
 	}
 
 }

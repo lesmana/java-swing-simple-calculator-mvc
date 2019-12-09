@@ -1,6 +1,3 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class Controller {
 
 	Model model;
@@ -9,17 +6,13 @@ public class Controller {
 	public Controller(Model model, View view) {
 		this.model = model;
 		this.view = view;
-		view.calcbutton.addActionListener(new ActionListener() {
+	}
 
-			public void actionPerformed(ActionEvent e) {
-				int i1 = Integer.parseInt(view.input1.getText());
-				String op = view.operand.getItemAt(view.operand.getSelectedIndex());
-				int i2 = Integer.parseInt(view.input2.getText());
-				int res = model.calculate(i1, op, i2);
-				view.result.setText(String.valueOf(res));
-			}
-
-		});
+	public void handleUserInput(String s1, String op, String s2) {
+		int i1 = Integer.parseInt(s1);
+		int i2 = Integer.parseInt(s2);
+		int res = this.model.calculate(i1, op, i2);
+		this.view.setResult(String.valueOf(res));
 	}
 
 	public void start() {
