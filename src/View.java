@@ -27,6 +27,8 @@ public class View {
 		JComboBox<String> operand = new JComboBox<String>(new String[] { "+", "-" });
 		JTextField input2 = new JTextField(10);
 		JButton calcbutton = new JButton("calculate");
+		result = new JLabel("    ");
+		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		calcbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s1 = input1.getText();
@@ -35,8 +37,6 @@ public class View {
 				controller.handleUserInput(s1, op, s2);
 			}
 		});
-		result = new JLabel("    ");
-		result.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		panel.add(input1);
 		panel.add(operand);
 		panel.add(input2);
