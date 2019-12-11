@@ -1,8 +1,5 @@
 public class Model {
 
-	public Model() {
-	}
-
 	public int calculate(int i1, String op, int i2) {
 		int res;
 		switch (op) {

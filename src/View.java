@@ -13,11 +13,7 @@ import javax.swing.JTextField;
 public class View {
 
 	Controller controller;
-
 	JLabel result;
-
-	public View() {
-	}
 
 	public void setController(Controller controller) {
 		this.controller = controller;
